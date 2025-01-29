@@ -1,33 +1,14 @@
 import React from "react";
-import Header from "./components/Header";
-import ProfileCard from "./components/ProfileCard";
-import TaskOverview from "./components/TaskOverview";
-import BudgetCard from "./components/BudgetCard";
-import TaskList from "./components/TaskList";
-import VendorsList from "./components/VendorsList";
-import CustomPackage from "./components/CustomPackage";
-import TrendingSection from "./components/TrendingSection";
-import BottomNav from "./components/BottomNav";
-import Sidebar from "./components/Sidebar";
-import styles from "./styles/App.module.css";
+import { RouterProvider } from "react-router-dom";
+import router from "./routing/GlobalRouting";
+import GlobalContext from "./GlobalContext/GlobalContext";
 
-const App = () => {
+function App() {
   return (
-    <div className={styles.container}>
-      <Sidebar />
-      <div className={styles.mainContent}>
-        <Header />
-        <ProfileCard />
-        <TaskOverview />
-        <BudgetCard />
-        <TaskList />
-        <VendorsList />
-        <CustomPackage />
-        <TrendingSection />
-      </div>
-      <BottomNav />
-    </div>
+    <GlobalContext>
+      <RouterProvider router={router} />
+    </GlobalContext>
   );
-};
+}
 
 export default App;
