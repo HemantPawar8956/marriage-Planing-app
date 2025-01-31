@@ -1,0 +1,457 @@
+Conversation opened. 1 unread message.
+
+Skip to content
+Using Gmail with screen readers
+1 of 779
+(no subject)
+Inbox
+
+Kanupriya sati <ksati6331@gmail.com>
+Attachments
+22:09 (8 minutes ago)
+to me
+
+
+ 5 attachments
+  • Scanned by Gmail
+/* Reset Styles */
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.background-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image :url('./Assets/bg-landing.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content-box-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1600px;
+  gap: 30px; /* Adds space between content box and signup form */
+  background-color: #f8f1e846; /* Soft pink background */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  text-align: center;
+  height: 80vh;
+}
+
+.content-box {
+  width: 100%;
+  max-width: 1200px; 
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 80vh;
+}
+
+.content-box img {
+  width: 710px;
+  height: 790px;
+}
+
+.content-box h1 {
+  font-size: 65px;
+  color: #0c1f0c; /* Deep purple */
+  margin-bottom: 20px;
+  text-align: left;
+  font-weight: 800;
+  margin-top: 10px;
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.content-box p {
+  font-size: 22px;
+  color: #0f180e; /* Muted purple */
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: left;
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Add a scale-up animation to the h3 */
+@keyframes scaleUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.8); /* Start smaller */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1); /* End at the normal size */
+  }
+}
+
+/* Add a word-by-word animation */
+@keyframes revealWords {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px); /* Words start from the left */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); /* Words move to their final position */
+  }
+}
+
+.content-box h3 {
+  font-size: 85px;
+  color: #0c1f0c;
+  text-align: left;
+  font-weight: 800;
+  font-family: "Dancing Script", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.content-box h3 span {
+  display: inline-block;
+  opacity: 0;
+  animation: revealWords 1s ease-out forwards;
+}
+
+.content-box h3 span:nth-child(1) {
+  animation-delay: 0s; /* No delay for the first word */
+}
+
+.content-box h3 span:nth-child(2) {
+  animation-delay: 0.3s; /* Delay for the second word */
+}
+
+.content-box h3 span:nth-child(3) {
+  animation-delay: 0.6s; /* Delay for the third word */
+}
+
+.content-box h3 span:nth-child(4) {
+  animation-delay: 0.9s; /* Delay for the fourth word */
+}
+
+.content-box h3 span:nth-child(5) {
+  animation-delay: 1.2s; /* Delay for the fifth word */
+}
+
+.content-box h3 span:nth-child(6) {
+  animation-delay: 1.5s; /* Delay for the sixth word */
+}
+
+.content-box a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #8A56AC; /* Rich purple for buttons */
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .content-box-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .content-box {
+    width: 80%;
+    padding: 20px;
+  }
+
+  .content-box h1 {
+    font-size: 28px;
+  }
+
+  .content-box p {
+    font-size: 16px;
+  }
+
+  .signup-form-box {
+    width: 100%;
+    margin-top: 30px;
+  }
+}
+
+.start-planning-btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 28px;
+  font-weight: 600;
+  color: white;
+  background-color: #1a251d; /* Rich purple */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-family: "Dancing Script", serif;
+  font-optical-sizing: auto;
+  margin-left: 70px;
+}
+
+.button-landing {
+  margin-left: -633px;
+}
+
+.start-planning-btn:hover {
+  background-color: #151a15; /* Lighter purple on hover */
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.start-planning-btn:active {
+  background-color: #141d15; /* Slightly darker purple when active */
+  transform: scale(0.95); /* Press effect */
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+
+/* Styles for Signup Form */
+.signup-form-box {
+  width: 100%;
+  max-width: 550px;
+  background-color: rgba(250, 213, 110, 0.527); /* White background for the form */
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 700px;
+}
+
+.signup-form-box h2 {
+  font-size: 36px;
+  color: #0c1f0c;
+  margin-bottom: 20px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  text-align: left;
+}
+
+.signup-form label {
+  font-size: 16px;
+  color: #333;
+}
+
+.signup-form input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background-color: rgba(23, 39, 17, 0.37);
+}
+.signup-form input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background-color: rgba(23, 39, 17, 0.37);
+}
+.signup-form input::placeholder {
+  color: #fafafa; /* Change placeholder text color */
+  font-size: 18px; 
+}
+.submit-btn {
+  background-color: #18201a;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #243124;
+  transform: scale(1.05);
+}
+/* Styling for the auth-description */
+.auth-description {
+  font-size: 18px;
+  color: #333;
+  text-align: center;
+  margin-top: 30px;
+  font-family: "Playfair Display", serif;
+  line-height: 1.6;
+}
+
+.auth-description a {
+  color: #19201c; /* Purple color for links */
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.auth-description a:hover {
+  color: #0c1f0c; /* Darker purple on hover */
+}
+
+.auth-description strong {
+  font-weight: 700;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .auth-description {
+    font-size: 16px;
+    margin-top: 20px;
+  }
+
+  .auth-description a {
+    font-size: 18px;
+  }
+}
+/* Add the fade-in and slide-up animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Applying animations to the active form */
+.signup-form-box {
+  width: 100%;
+  max-width: 550px;
+  background-color: rgba(255, 255, 255, 0.527); /* White background for the form */
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 700px;
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn 0.5s ease-out forwards, slideUp 0.5s ease-out forwards; /* Apply both fade and slide animations */
+}
+
+.signup-form-box.active {
+  opacity: 1; /* Make visible */
+  animation: fadeIn 1s ease-out forwards, slideUp 1s ease-out forwards; /* Trigger the animation */
+}
+
+.auth-description {
+  font-size: 18px;
+  color: #333;
+  text-align: center;
+  margin-top: 30px;
+  font-family: "Playfair Display", serif;
+  line-height: 1.6;
+}
+
+.auth-description a {
+  color: #19201c; /* Purple color for links */
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.auth-description a:hover {
+  color: #0c1f0c; /* Darker purple on hover */
+}
+
+/* Style for the login method toggle button */
+.login-method-toggle {
+  margin-bottom: 20px;
+}
+
+/* Style for the login method toggle button */
+.login-method-toggle {
+  margin-bottom: 20px;
+}
+
+.toggle-btn {
+  padding: 8px 16px;
+  color: #151a15;
+  background-color: rgba(255, 255, 255, 0.37);
+  font-size: 28px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: "Dancing Script", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  display: inline-block;
+}
+/* User Type Selection Buttons */
+.user-type-selection {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap:30px;
+}
+
+.user-type-btn {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #384435a1;
+  border: none;
+  border-radius: 58px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 68%; /* Ensures both buttons are equally sized */
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.user-type-btn.active {
+  background-color: #22382b;
+  color: white;
+}
+
+.user-type-btn:hover {
+  background-color: #ddd;
+}
+
+global.css
+Displaying global.css.
