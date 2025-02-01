@@ -1,21 +1,19 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import Home from "../components/Home";
-import Login from "../components/Login";
-import Register from "../components/Register";
-import NotFound from "../components/NotFound";
-
-// Role-based Dashboards
-import AdminDashboard from "../components/AdminDashboard";
-import UserDashboard from "../components/UserDashboard";
-import VendorDashboard from "../components/VendorDashboard";
 
 // Private Route Handler
-import PrivateRoute from "./PrivateRoute";
+import Home from "./../pages/Home";
+import Login from "./../pages/Login";
+import Signup from "./../pages/Signup";
+import PageNotFound from "./../pages/PageNotFound";
+import AdminDashboard from "./../admin/AdminDashboard";
+import VendorDashboard from "./../vendor/VendorDashboard";
+import PrivateRoute from "./../auth/PrivateRoute";
+import UserDashboard from "./../user/UserDashboard";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
   { path: "/login", element: <Login /> },
-  { path: "/register", element: <Register /> },
+  { path: "/register", element: <Signup /> },
 
   // Admin Routes (Protected)
   {
@@ -37,7 +35,7 @@ const router = createBrowserRouter([
     element: <PrivateRoute allowedRoles={["vendor"]} />,
     children: [{ index: true, element: <VendorDashboard /> }],
   },
-  { path: "*", element: <NotFound /> },
+  { path: "*", element: <PageNotFound /> },
 ]);
 
 export default router;
