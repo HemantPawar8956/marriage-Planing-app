@@ -8,7 +8,7 @@ import PageNotFound from "./../pages/PageNotFound";
 import AdminDashboard from "./../admin/AdminDashboard";
 import VendorDashboard from "./../vendor/VendorDashboard";
 import PrivateRoute from "./../auth/PrivateRoute";
-import UserDashboard from "./../user/UserDashboard";
+import UserDashboard from "../user/UserDashBoard/UserDashboard";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },

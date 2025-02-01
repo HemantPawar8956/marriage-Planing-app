@@ -1,25 +1,24 @@
+import React from "react";
+import "aos/dist/aos.css";
+import "animate.css";
+import AOS from "aos";
+// import styles from "./WeddingDashboard.module.css"; // CSS Module for styling
 
-import React from 'react';
-import 'aos/dist/aos.css';
-import 'animate.css';
-import AOS from 'aos';
-import styles from './WeddingDashboard.module.css'; // CSS Module for styling
-
-const WeddingDashboard = () => {
+const UserDashboard = () => {
   // Sample data for the dashboard
   const weddingDetails = {
-    brideName: 'Ananya',
-    groomName: 'Rahul',
-    weddingDate: 'December 15, 2023',
+    brideName: "Ananya",
+    groomName: "Rahul",
+    weddingDate: "December 15, 2023",
     daysLeft: 45,
-    budget: '₹15,00,000',
+    budget: "₹15,00,000",
     tasksCompleted: 12,
     totalTasks: 20,
     vendors: [
-      { name: 'Photographer', status: 'Booked' },
-      { name: 'Caterer', status: 'Pending' },
-      { name: 'Decorator', status: 'Booked' },
-      { name: 'Venue', status: 'Confirmed' },
+      { name: "Photographer", status: "Booked" },
+      { name: "Caterer", status: "Pending" },
+      { name: "Decorator", status: "Booked" },
+      { name: "Venue", status: "Confirmed" },
     ],
   };
 
@@ -79,11 +78,10 @@ const WeddingDashboard = () => {
               </p>
               <p
                 className={`${styles.status} ${
-                  vendor.status === 'Booked' || vendor.status === 'Confirmed'
+                  vendor.status === "Booked" || vendor.status === "Confirmed"
                     ? styles.booked
                     : styles.pending
-                }`}
-              >
+                }`}>
                 {vendor.status}
               </p>
             </div>
@@ -94,4 +92,4 @@ const WeddingDashboard = () => {
   );
 };
 
-export default WeddingDashboard;
+export default UserDashboard;
