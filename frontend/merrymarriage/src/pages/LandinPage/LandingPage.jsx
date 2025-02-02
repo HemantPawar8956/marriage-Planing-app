@@ -108,7 +108,7 @@ const LandingPage = () => {
             <p>
               {isSignUp ? (
                 <>
-                  Already a member?{" "}
+                  Already a member?
                   <strong>
                     <a
                       href="#"

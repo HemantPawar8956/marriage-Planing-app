@@ -18,6 +18,7 @@ app.use(
 connectDB(process.env.mongodb_URL);
 
 app.use("/user", userRoutes);
+
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`application is working on the port no ${PORT}`);
