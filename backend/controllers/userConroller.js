@@ -16,22 +16,17 @@ export const getAllUser = async (req, res) => {
 export const uploadUserImage = async (req, res) => {
   try {
     let id = req.body.id;
-   
-    let uploadedImage;
+
     if (!req.file) {
       return res.status(400).json({ error: "No file uploaded" });
     }
-    if (!id) {
-      uploadedImage = await imageUploadUtilis(req.file); // Upload to Cloudinary
-    } else {
-      console.log(id);
-      uploadedImage = await imageUploadUtilis(req.file);
-      await User.findByIdAndUpdate(
-        id,
-        { $set: { profileImage: uploadedImage.secure_url } },
-        { new: true }
-      );
-    }
+
+    let uploadedImage = await imageUploadUtilis(req.file);
+    await User.findByIdAndUpdate(
+      id,
+      { $set: { profileImage: uploadedImage.secure_url } },
+      { new: true }
+    );
 
     return res.status(200).json({
       message: "Image uploaded successfully",

@@ -168,7 +168,7 @@ const LandingPage = () => {
             <p>
               {isSignUp ? (
                 <>
-                  Already a member?{" "}
+                  Already a member?
                   <strong>
                     <a href="#" onClick={handleToggleForm} className={styles.loginLine}>
                       Login here
