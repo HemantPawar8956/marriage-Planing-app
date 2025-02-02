@@ -4,6 +4,7 @@ import router from "./routing/GlobalRouting";
 import GlobalContext from "./GlobalContext/GlobalContext";
 import Profile from "./components/profile/Profile";
 import LandingPage from "./pages/LandinPage/LandingPage";
+import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
     //   <RouterProvider router={router} />
     // </GlobalContext>
     <LandingPage />
+    // <PageNotFound/>
   );
 }
 

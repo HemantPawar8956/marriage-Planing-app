@@ -60,3 +60,16 @@ export const addnewUser = async (req, res) => {
     res.status(500).send("error while adding the user");
   }
 };
+
+export const updateUser = async () => {
+  const { id } = req.params;
+
+  try {
+    const response = User.findByIdAndUpdate(
+      id,
+      { $set: req.body },
+      { new: true }
+    );
+    
+  } catch (error) {}
+};

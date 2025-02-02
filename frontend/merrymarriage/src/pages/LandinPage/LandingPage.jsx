@@ -1,17 +1,74 @@
 import React, { useState } from "react";
 import styles from "./LandingPage.module.css";
+import { Toaster, toast } from "react-hot-toast";
 
 const LandingPage = () => {
   const [isSignUp, setIsSignUp] = useState(true);
-  const [isEmailLogin, setIsEmailLogin] = useState(true);
   const [userType, setUserType] = useState("user");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
   const handleToggleForm = () => setIsSignUp(!isSignUp);
-  const handleToggleLoginMethod = () => setIsEmailLogin(!isEmailLogin);
+
   const handleUserTypeSelect = (type) => setUserType(type);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const validateForm = () => {
+    if (isSignUp && !formData.name.trim()) {
+      toast.error("Name is required for sign-up!");
+      return false;
+    }
+    if (!formData.email.trim()) {
+      toast.error("Email is required!");
+      return false;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast.error("Please enter a valid email address!");
+      return false;
+    }
+    if (!formData.password.trim()) {
+      toast.error("Password is required!");
+      return false;
+    }
+    if (formData.password.length < 6) {
+      toast.error("Password must be at least 6 characters long!");
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+
+    if (isSignUp) {
+      toast.success("Sign-up successful! Welcome to Knot Perfect!");
+      console.log("Sign-up data:", { ...formData, userType });
+    } else {
+      toast.success("Login successful! Welcome back!");
+      console.log("Login data:", { email: formData.email, password: formData.password });
+    }
+  };
+
+  const handleGoogleSignIn = () => {
+    // Simulate Google Sign-in process
+    toast("Google Sign-In clicked. Implement authentication logic.");
+    console.log("Sign in with Google clicked");
+  };
 
   return (
     <div className={styles.backgroundContainer}>
+      {/* Toaster for notifications */}
+      <Toaster position="top-center" reverseOrder={false} />
+
       <div className={styles.contentBoxContainer}>
         <div className={styles.contentBox}>
           <h3 className={styles.heading}>
@@ -32,88 +89,88 @@ const LandingPage = () => {
           </div>
         </div>
 
-        <div
-          className={`${styles.signupFormBox} ${
-            isSignUp ? styles.active : ""
-          }`}>
+        <div className={`${styles.signupFormBox} ${isSignUp ? styles.active : ""}`}>
           <h2 className={styles.formTitle}>{isSignUp ? "Sign Up" : "Login"}</h2>
-          <div className={styles.loginMethodToggle}>
-            <button
-              className={`${styles.toggleBtn} ${
-                isEmailLogin ? styles.active : ""
-              }`}
-              onClick={handleToggleLoginMethod}>
-              {isEmailLogin
-                ? isSignUp
-                  ? "Sign Up with Phone Number"
-                  : "Login with Phone Number"
-                : isSignUp
-                ? "Sign Up with Email"
-                : "Login with Email"}
-            </button>
-          </div>
-          {isSignUp && (
-            <div className={styles.userTypeSelection}>
-              <button
-                className={`${styles.userTypeBtn} ${
-                  userType === "user" ? styles.active : ""
-                }`}
-                onClick={() => handleUserTypeSelect("user")}>
-                Sign Up as User
-              </button>
-              <button
-                className={`${styles.userTypeBtn} ${
-                  userType === "vendor" ? styles.active : ""
-                }`}
-                onClickx={() => handleUserTypeSelect("vendor")}>
-                Sign Up as Vendor
-              </button>
-            </div>
-          )}
-          <form className={styles.signupForm}>
+
+          <form className={styles.signupForm} onSubmit={handleSubmit}>
             {isSignUp && (
               <input
                 type="text"
+                name="name"
                 placeholder="Enter your name"
                 className={styles.inputField}
-                required
-              />
-            )}
-            {isEmailLogin ? (
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className={styles.inputField}
-                required
-              />
-            ) : (
-              <input
-                type="text"
-                placeholder="Enter your phone number"
-                className={styles.inputField}
+                value={formData.name}
+                onChange={handleInputChange}
                 required
               />
             )}
             <input
-              type="password"
-              placeholder="Enter your password"
+              type="email"
+              name="email"
+              placeholder="Enter your email or phone number"
               className={styles.inputField}
+              value={formData.email}
+              onChange={handleInputChange}
               required
             />
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+              className={styles.inputField}
+              value={formData.password}
+              onChange={handleInputChange}
+              required
+            />
+
+            {isSignUp && (
+              <div className={styles.radioContainer}>
+                <p>Select Account Type:</p>
+                <label className={styles.radioLabel}>
+                  <input
+                    type="radio"
+                    value="user"
+                    checked={userType === "user"}
+                    onChange={() => handleUserTypeSelect("user")}
+                    className={styles.radioInput}
+                  />
+                  User
+                </label>
+                <label className={styles.radioLabel}>
+                  <input
+                    type="radio"
+                    value="vendor"
+                    checked={userType === "vendor"}
+                    onChange={() => handleUserTypeSelect("vendor")}
+                    className={styles.radioInput}
+                  />
+                  Vendor
+                </label>
+              </div>
+            )}
+
             <button type="submit" className={styles.submitBtn}>
               {isSignUp ? "Sign Up" : "Login"}
             </button>
+
+            {/* Google Sign-in button for both Sign Up and Login */}
+            <button
+              type="button"
+              className={styles.googleSignInBtn}
+              onClick={handleGoogleSignIn}
+            >
+              <img src="/assets/google.png" alt="Google Logo" className={styles.googleLogo} />
+              {isSignUp ? "Sign Up with Google" : "Login with Google"}
+            </button>
           </form>
+
           <div className={styles.authDescription}>
             <p>
               {isSignUp ? (
                 <>
                   Already a member?
                   <strong>
-                    <a
-                      href="#"
-                      onClick={handleToggleForm}
-                      className={styles.loginLine}>
+                    <a href="#" onClick={handleToggleForm} className={styles.loginLine}>
                       Login here
                     </a>
                   </strong>
